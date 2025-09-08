@@ -144,7 +144,7 @@ As a text format, Markdown integrates seamlessly with the JSDA ecosystem: buildi
 
 JSDA's key advantage is versatility — it works on both server and client sides. Consider a hybrid web application where part of the document renders on the server while other parts require dynamic client control. The simplest way to specify which parts should be hydrated is using the Custom Elements standard.
 
-This enables native lifecycle methods to activate markup and bind data and handlers at specific locations. No need to invent placeholder-based workflows (like many other solutions) — we have everything needed. Custom Elements provide access to their inner content via the standard DOM API.
+This enables native lifecycle methods to activate markup and bind data and handlers at specific locations. No need to invent placeholder-based or other additional-data-based workflows (like many other solutions) — we have everything needed. Custom Elements provide access to their inner content via the standard DOM API.
 
 To insert external application parts, simply use the `innerHTML` interface at browser runtime or include pre-rendered HTML parts on your server.
 
