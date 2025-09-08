@@ -1,0 +1,161 @@
+# JSDA - JavaScript Distributed Assets
+
+JavaScript Distributed Assets (JSDA) represents a modern evolution of the [JAMStack](https://jamstack.org/) philosophy, extending beyond static site generation to encompass comprehensive web development patterns. JSDA addresses complex use cases including hybrid web applications, dynamic server-side rendering, advanced dependency management, and optimized micro-frontend architectures.
+
+JSDA embraces leveraging native web technologies to their full potential without unnecessary complexity. Rather than reinventing existing solutions, JSDA provides workflow principles for utilizing web standards with maximum flexibility and minimal overhead.
+
+> JSDA is a set of principles and recommendations that doesn't force you to use specific tools.
+
+### The Central Concept
+
+JSDA transforms standard JavaScript ESM modules into text-based web asset generation endpoints. This approach mirrors PHP's model but leverages modern JavaScript's universal capabilities.
+
+**Key Principle**: A JSDA file is a standard JavaScript module that exports a string representing web assets like HTML, CSS, SVG, Markdown, or JSON data.
+
+### File Naming Convention
+
+Asset types are determined through intuitive file naming conventions:
+- **index.html.js** → HTML generation
+- **styles.css.js** → CSS generation
+- **icon.svg.js** → SVG generation
+- **content.md.js** → Markdown generation
+
+Static asset generation endpoints should be named as **index.*.js**. The output file structure reflects the source:
+```
+src/
+├── index.html.js          → dist/index.html
+├── styles/
+│   └── index.css.js       → dist/styles/index.css
+└── assets/
+    └── logo/
+        └── index.svg.js   → dist/assets/logo/index.svg
+```
+
+### Basic Example
+
+```js
+// index.html.js
+
+// Import templating utilities (optional)
+import { applyData, html } from 'jsda-kit';
+
+// Define reusable template
+const template = html`
+<div class="user-profile">
+  <div class="user-name">{{firstName}} {{lastName}}</div>
+  <div class="user-role">{{role}}</div>
+</div>
+`;
+
+// Fetch data asynchronously (optional)
+const userData = await (await fetch('./data/user-data.json')).json();
+
+// Export the rendered asset
+export default applyData(template, userData);
+```
+
+**Generated Output** (`index.html`):
+```html
+<div class="user-profile">
+  <div class="user-name">John Doe</div>
+  <div class="user-role">Senior Developer</div>
+</div>
+```
+
+The result can be saved to the file system as a static asset or served dynamically. This provides templates, module/component structure, asynchronous data fetching, and caching out of the box—most features are provided by the platform itself without library bloat and with minimal project configuration.
+
+## Reasonable Minimalism
+
+Modern AI tools are driving a huge development paradigm shift. While AI assistants significantly boost productivity, new challenges emerge: we need to optimize token consumption industry-wide and drop obsolete legacy patterns. Otherwise, AI will reproduce inefficient solutions that appeared during early platform development.
+
+Many popular development tools were created to address missing native platform capabilities. They became foundations for additional abstraction layers, resulting in solutions that duplicate platform-native features available today.
+
+Consider CSS pre- and post-processors: they introduce custom syntax and additional processing tools. But do we really need them? Modern CSS variables provide more powerful dynamic runtime styling, and JavaScript enables custom logic and automation for building stylesheets on both server and client sides.
+
+Similar examples include using additional tools for micro-frontend architectures instead of standard **importmap**, or custom component models instead of the Custom Elements standard.
+
+We don't need to duplicate existing capabilities. Native platform features are more reliable, resource-efficient, well-documented, and more flexible than external black boxes. JSDA principles rely on this minimalistic yet powerful approach.
+
+## JavaScript as the New PHP
+
+The JSDA approach shares similarities with PHP (Hypertext Preprocessor). Why choose JSDA over established PHP? The answer lies in Occam's razor and the DRY principle (Don't Repeat Yourself). JavaScript is simply more universal — it works on both server and browser.
+
+The ability to use identical code in Node.js and browsers is crucial, as is sharing project settings, types, and development environment tools. This creates significant economies in testing, documentation, maintenance, and more.
+
+## Distributed Composition
+
+This concept is particularly promising. We build solutions from modules that can collect components from different endpoints. Some are simple JavaScript files, others are retrieved from external HTTPS endpoints (including CDNs). This leverages the native ESM standard, which includes built-in security and caching policies.
+
+Imagine requesting application parts as complete external services that provide everything needed for operation. This enables new developer interaction models where small teams provide services independently, using smart-contract consumption-based payroll systems. It also supports Open Source project financing. We know about microservices and micro-frontends — now it's time for micro-products.
+
+Two basic resource provision strategies exist:
+1. Serve JS files as-is, building all dependencies at runtime
+2. Use middleware build & cache stages where HTTPS endpoints serve results for specific entry points
+
+The second option is more relevant for micro-product providers, similar to how JavaScript CDNs work (e.g., esm.run, JSPM.io, skypack.dev).
+
+> JSDA's distributed composition model represents a paradigm shift toward granular, service-oriented web development. This architecture enables applications to dynamically compose functionality from multiple sources while maintaining security and performance.
+
+## TypeScript Usage Convention
+
+JSDA conceptually relies on the ESM standard and its composition model. Each module should be a potential entry point for middleware-cached results, even as part of a larger application. Therefore, it's important to skip additional build stages and interoperability overhead between different ecosystems.
+
+We use a well-adopted approach that combines TypeScript static analysis benefits with vanilla JavaScript flexibility: JSDoc-based type definitions. This approach supports additional definition files (*.d.ts), utilities, global and complex definitions. Moreover, JSDoc enables documentation generation and integration with AI-driven workflows.
+
+More information about JSDoc type definitions: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
+
+## Code Highlighting Convention
+**Pattern:** Prefix comments for IDE support
+**Purpose:** Enable syntax highlighting and IntelliSense in string templates
+
+```js
+// Enable HTML highlighting
+const htmlTemplate = /*html*/ `
+<div class="component">
+  <h2>{{title}}</h2>
+  <p>{{description}}</p>
+</div>
+`;
+
+// Enable CSS highlighting
+const styles = /*css*/ `
+.component {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--bg-color);
+}
+`;
+
+// Enable SVG highlighting
+const icon = /*svg*/ `
+<svg viewBox="0 0 24 24">
+  <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.09 2 .73 2 1.84"/>
+</svg>
+`;
+```
+
+## Markdown
+
+Markdown is a lightweight, easy-to-use syntax for styling text. It's excellent for quickly creating web content and has become the de facto standard for LLM-based tool interactions. We use Markdown to describe contexts and represent formatted input/output.
+
+As a text format, Markdown integrates seamlessly with the JSDA ecosystem: building contexts from parts and modules, providing text data for direct web access for the LLM-tools, and more. We use Markdown for web articles and documentation content.
+
+## Hybrid Widgets
+
+JSDA's key advantage is versatility — it works on both server and client sides. Consider a hybrid web application where part of the document renders on the server while other parts require dynamic client control. The simplest way to specify which parts should be hydrated is using the Custom Elements standard.
+
+This enables native lifecycle methods to activate markup and bind data and handlers at specific locations. No need to invent placeholder-based workflows (like many other solutions) — we have everything needed. Custom Elements provide access to their inner content via the standard DOM API.
+
+To insert external application parts, simply use the `innerHTML` interface at browser runtime or include pre-rendered HTML parts on your server.
+
+## Ecosystem
+
+Implementing JSDA requires some additional lightweight tools. The exact set is your choice, but we're developing tools to provide our detailed vision and make getting started more convenient.
+
+**[Symbiote.js](https://rnd-pro.com/symbiote/)** is our frontend library that describes templates and reactive bindings in HTML format using native tag attributes. This enables flexible rendering manipulation and using pre-rendered markup as templates, making Custom Elements Server Side Rendering simple and effective. The library is fast and powerful, providing the same developer experience as other modern frontend libraries while extending (not replacing) the native DOM API.
+
+**[JSDA-Kit](https://github.com/rnd-pro/jsda-kit)** is an isomorphic (primarily Node.js) library providing toolsets for Static Site Generation, Server Side Rendering, and dynamic JSDA real-time servers.
+
+**[Cloud Images Toolkit](https://github.com/rnd-pro/JSDA-server)** offers project media asset collection management, publishing, and collaborative work capabilities.
+
+> Join us in the future of web development!

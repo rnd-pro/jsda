@@ -1,0 +1,21 @@
+## editors
+/.idea
+/.vscode
+/.agicoder
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+
+## dev
+TMP
+build
+dist
+env
+
+## Cloud Images Toolkit
+cit/cit-store/
+cit/CIT_API_KEY
