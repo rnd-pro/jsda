@@ -4,7 +4,7 @@ JavaScript Distributed Assets (JSDA) represents a modern evolution of the [JAMSt
 
 JSDA embraces leveraging native web technologies to their full potential without unnecessary complexity. Rather than reinventing existing solutions, JSDA provides workflow principles for utilizing web standards with maximum flexibility and minimal overhead.
 
-> JSDA is a set of principles and recommendations that doesn't force you to use specific tools.
+> JSDA is a set of principles, conventions and recommendations that doesn't force you to use specific tools.
 
 ### The Central Concept
 
@@ -97,6 +97,8 @@ The second option is more relevant for micro-product providers, similar to how J
 > JSDA's distributed composition model represents a paradigm shift toward granular, service-oriented web development. This architecture enables applications to dynamically compose functionality from multiple sources while maintaining security and performance.
 
 ## TypeScript Usage Convention
+
+TypeScript - is an incredibly significant part of the modern JavaScript development ecosystem. But we have a few caveats about using it.
 
 JSDA conceptually relies on the ESM standard and its composition model. Each module should be a potential entry point for middleware-cached results, even as part of a larger application. Therefore, it's important to skip additional build stages and interoperability overhead between different ecosystems.
 
