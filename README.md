@@ -150,6 +150,10 @@ This enables native lifecycle methods to activate markup and bind data and handl
 
 To insert external application parts, simply use the `innerHTML` interface at browser runtime or include pre-rendered HTML parts on your server.
 
+## Learning Curve
+
+JSDA features a gentle learning curve designed for developers of all experience levels. This elegant and flexible architecture requires minimal JavaScript expertise to get started — you only need familiarity with two fundamental concepts: [ESM (ES Modules)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) for modular code organization and [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) for dynamic string composition.
+
 ## Ecosystem
 
 Implementing JSDA requires some additional lightweight tools. The exact set is your choice, but we're developing tools to provide our detailed vision and make getting started more convenient.
