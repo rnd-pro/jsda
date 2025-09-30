@@ -96,6 +96,37 @@ The second option is more relevant for micro-product providers, similar to how J
 
 > JSDA's distributed composition model represents a paradigm shift toward granular, service-oriented web development. This architecture enables applications to dynamically compose functionality from multiple sources while maintaining security and performance.
 
+## Content Delivery Networks (CDN)
+
+Once JSDA has rendered its content, the generated assets can be deployed to Content Delivery Networks (CDNs) for enhanced performance, global distribution, and cross-project asset sharing. Following JAMStack principles, JSDA leverages CDNs to achieve maximum reliability, speed, and scalability.
+
+**Developer Experience**
+- **Version Management**: CDNs support versioned asset delivery with cache-busting strategies
+- **Hot-Swapping**: Update assets without server restarts or application downtime
+- **Analytics & Monitoring**: Built-in performance metrics and usage analytics
+
+### CDN Deployment Strategies
+
+**Static Asset Distribution**
+```js
+// Generated assets ready for CDN deployment
+dist/
+├── index.html             → https://cdn.example.com/v1.2.0/index.html
+├── styles/
+│   └── index.css          → https://cdn.example.com/v1.2.0/styles/index.css
+└── components/
+    └── user-profile.js    → https://cdn.example.com/v1.2.0/components/user-profile.js
+```
+
+### Security and Reliability
+
+**Content Integrity**
+- **Subresource Integrity (SRI)**: Verify asset integrity using cryptographic hashes
+- **HTTPS Enforcement**: All CDN endpoints use secure connections by default
+- **Access Control**: Configure CORS policies and access restrictions
+
+By leveraging CDNs effectively, JSDA applications achieve enterprise-grade performance and reliability while maintaining the flexibility and simplicity that define the JSDA philosophy.
+
 ## TypeScript Usage Convention
 
 TypeScript - is an incredibly significant part of the modern JavaScript development ecosystem. But we have a few caveats about using it.
