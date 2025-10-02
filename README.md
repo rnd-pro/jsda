@@ -82,6 +82,24 @@ The JSDA approach shares similarities with PHP (Hypertext Preprocessor). Why cho
 
 The ability to use identical code in Node.js and browsers is crucial, as is sharing project settings, types, and development environment tools. This creates significant economies in testing, documentation, maintenance, and more.
 
+## Package Management
+
+JSDA leverages standard package managers (like npm, pnpm, or yarn) to treat web assets as versionable, distributable dependencies. Since every JSDA asset is fundamentally a JavaScript module, you can publish, install, and import them just like any other package.
+
+This powerful pattern allows you to:
+- **Share & Reuse**: Distribute UI components, style libraries, SVG icons, or even entire page layouts across multiple projects.
+- **Version Control**: Manage your assets with semantic versioning, ensuring stable and predictable updates.
+- **Simplify Dependencies**: Use the tools you already know. No special registries or plugins are required.
+
+For example, after installing a shared component package (`npm install @my-org/ui-card`), you can import and use it directly:
+
+```js
+// index.html.js
+import card from '@my-org/ui-card/index.html.js'; // Imports the card's HTML string
+
+export default `<h1>My Page</h1> ${card}`;
+```
+
 ## Distributed Composition
 
 This concept is particularly promising. We build solutions from modules that can collect components from different endpoints. Some are simple JavaScript files, others are retrieved from external HTTPS endpoints (including CDNs). This leverages the native ESM standard, which includes built-in security and caching policies.
