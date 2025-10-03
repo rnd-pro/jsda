@@ -126,8 +126,9 @@ Once JSDA has rendered its content, the generated assets can be deployed to Cont
 ### CDN Deployment Strategies
 
 **Static Asset Distribution**
-```js
-// Generated assets ready for CDN deployment
+
+Generated assets ready for CDN deployment:
+```
 dist/
 ├── index.html             → https://cdn.example.com/v1.2.0/index.html
 ├── styles/
