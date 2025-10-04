@@ -104,7 +104,7 @@ export default `<h1>My Page</h1> ${card}`;
 
 JSDA enables a seamless two-way workflow between raw assets and JavaScript modules. While JSDA modules generate text assets, existing assets like SVGs or Markdown files can be easily wrapped in a JSDA module for processing or inclusion in your project.
 
-For instance, you can read an SVG file created in a visual editor, process it, and export it as a module:
+For instance, you can read an SVG file created in a visual editor, process it, and export it as a JSDA (my-logo.svg.js):
 ```js
 import fs from 'fs';
 import { mySvgProcessor } from './my-svg-processor.js';
