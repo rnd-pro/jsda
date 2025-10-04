@@ -100,6 +100,18 @@ import card from '@my-org/ui-card/index.html.js'; // Imports the card's HTML str
 export default `<h1>My Page</h1> ${card}`;
 ```
 
+## Easy Two-Way Conversion
+
+JSDA enables a seamless two-way workflow between raw assets and JavaScript modules. While JSDA modules generate text assets, existing assets like SVGs or Markdown files can be easily wrapped in a JSDA module for processing or inclusion in your project.
+
+For instance, you can read an SVG file created in a visual editor, process it, and export it as a module:
+```js
+import fs from 'fs';
+import { mySvgProcessor } from './my-svg-processor.js';
+
+export default mySvgProcessor(fs.readFileSync('./src/svg/my-logo.svg'));
+```
+
 ## Distributed Composition
 
 This concept is particularly promising. We build solutions from modules that can collect components from different endpoints. Some are simple JavaScript files, others are retrieved from external HTTPS endpoints (including CDNs). This leverages the native ESM standard, which includes built-in security and caching policies.
