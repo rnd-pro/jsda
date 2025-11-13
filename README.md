@@ -225,6 +225,6 @@ Implementing JSDA requires some additional lightweight tools. The exact set is y
 
 **[JSDA-Kit](https://github.com/rnd-pro/jsda-kit)** is an isomorphic (primarily Node.js) library providing toolsets for Static Site Generation, Server Side Rendering, and dynamic JSDA real-time servers.
 
-**[Cloud Images Toolkit](https://github.com/rnd-pro/JSDA-server)** offers project media asset collection management, publishing, and collaborative work capabilities.
+**[Cloud Images Toolkit](https://github.com/rnd-pro/cloud-images-toolkit)** offers project media asset collection management, publishing, and collaborative work capabilities.
 
 > Join us in the future of web development!
