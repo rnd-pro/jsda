@@ -34,35 +34,40 @@ src/
 ### Basic Example
 
 ```js
-// index.html.js
+// Create index.html.js
 
-// Import templating utilities (optional)
-import { applyData, html } from 'jsda-kit';
+// Import data access method (optional):
+import { getPageData } from './project-data.js';
 
-// Define reusable template
-const template = html`
-<div class="user-profile">
-  <div class="user-name">{{firstName}} {{lastName}}</div>
-  <div class="user-role">{{role}}</div>
-</div>
+// Get necessary data (optional):
+const pageData = await getPageData();
+
+// Export final HTML document:
+export default /*html*/ `
+<html>
+<head>
+  <title>${pageData.title}</title>
+</head>
+<body>
+  <h1>${pageData.heading}</h1>
+</body>
+</html>
 `;
-
-// Fetch data asynchronously (optional)
-const userData = await (await fetch('./data/user-data.json')).json();
-
-// Export the rendered asset
-export default applyData(template, userData);
 ```
 
 **Generated Output** (`index.html`):
 ```html
-<div class="user-profile">
-  <div class="user-name">John Doe</div>
-  <div class="user-role">Senior Developer</div>
-</div>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <h1>Page Heading</h1>
+</body>
+</html>
 ```
 
-The result can be saved to the file system as a static asset or served dynamically. This provides templates, module/component structure, asynchronous data fetching, and caching out of the box—most features are provided by the platform itself without library bloat and with minimal project configuration.
+The result can be saved to the file system as a static asset or served dynamically. This provides templates, module/component structure, asynchronous data fetching, and caching out of the box — most features are provided by the platform itself without library bloat and with minimal project configuration.
 
 ## Reasonable Minimalism
 
@@ -225,6 +230,6 @@ Implementing JSDA requires some additional lightweight tools. The exact set is y
 
 **[JSDA-Kit](https://github.com/rnd-pro/jsda-kit)** is an isomorphic (primarily Node.js) library providing toolsets for Static Site Generation, Server Side Rendering, and dynamic JSDA real-time servers.
 
-**[Cloud Images Toolkit](https://github.com/rnd-pro/JSDA-server)** offers project media asset collection management, publishing, and collaborative work capabilities.
+**[Cloud Images Toolkit](https://github.com/rnd-pro/cloud-images-toolkit)** offers project media asset collection management, publishing, and collaborative work capabilities.
 
 > Join us in the future of web development!
